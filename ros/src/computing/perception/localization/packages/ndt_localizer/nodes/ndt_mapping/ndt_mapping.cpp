@@ -897,32 +897,32 @@ int main(int argc, char** argv)
   std::cout << "use_odom: " << _use_odom << std::endl;
   std::cout << "imu_topic: " << _imu_topic << std::endl;
 
-  if (nh.getParam("tf_x", _tf_x) == false)
+  if (nh.getParam("/tf_x", _tf_x) == false)
   {
     std::cout << "tf_x is not set." << std::endl;
     return 1;
   }
-  if (nh.getParam("tf_y", _tf_y) == false)
+  if (nh.getParam("/tf_y", _tf_y) == false)
   {
     std::cout << "tf_y is not set." << std::endl;
     return 1;
   }
-  if (nh.getParam("tf_z", _tf_z) == false)
+  if (nh.getParam("/tf_z", _tf_z) == false)
   {
     std::cout << "tf_z is not set." << std::endl;
     return 1;
   }
-  if (nh.getParam("tf_roll", _tf_roll) == false)
+  if (nh.getParam("/tf_roll", _tf_roll) == false)
   {
     std::cout << "tf_roll is not set." << std::endl;
     return 1;
   }
-  if (nh.getParam("tf_pitch", _tf_pitch) == false)
+  if (nh.getParam("/tf_pitch", _tf_pitch) == false)
   {
     std::cout << "tf_pitch is not set." << std::endl;
     return 1;
   }
-  if (nh.getParam("tf_yaw", _tf_yaw) == false)
+  if (nh.getParam("/tf_yaw", _tf_yaw) == false)
   {
     std::cout << "tf_yaw is not set." << std::endl;
     return 1;
@@ -953,8 +953,8 @@ int main(int argc, char** argv)
 
   map.header.frame_id = "map";
 
-  ndt_map_pub = nh.advertise<sensor_msgs::PointCloud2>("/ndt_map", 1000);
-  current_pose_pub = nh.advertise<geometry_msgs::PoseStamped>("/current_pose", 1000);
+  ndt_map_pub = nh.advertise<sensor_msgs::PointCloud2>("ndt_map", 1000);
+  current_pose_pub = nh.advertise<geometry_msgs::PoseStamped>("current_pose", 1000);
 
   ros::Subscriber param_sub = nh.subscribe("config/ndt_mapping", 10, param_callback);
   ros::Subscriber output_sub = nh.subscribe("config/ndt_mapping_output", 10, output_callback);
